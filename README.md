@@ -1,7 +1,7 @@
 # JTAG Test
 
 ## Hardware
-Płytka Maximator
+Płytka Maximator  
 USB Blaster
 
 ## Software
