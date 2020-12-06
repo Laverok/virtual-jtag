@@ -5,7 +5,9 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity Mux7Seg is -- Responsible for displaying numbers on a 7seg display
     Port ( clk : in STD_LOGIC;
     	   data_in : in STD_LOGIC_VECTOR (15 downto 0); -- 4x4bit BCD input
+			--dp_in : in STD_LOGIC_VECTOR (3 downto 0);
          seven_seg : out STD_LOGIC_VECTOR (6 downto 0); -- 6:0 -> A:G leds 
+			--dp_out : out STD_LOGIC_VECTOR(3 downto 0); 
          cathode : out STD_LOGIC_VECTOR(3 downto 0)); -- Controls which digit is displayed at the moment
 end Mux7Seg;
 
@@ -69,6 +71,18 @@ begin
 				seven_seg <= "1111111"; 
 			when "1001" =>
 				seven_seg <= "1111011"; 
+			when "1010" =>
+				seven_seg <= "1110111"; 
+			when "1011" =>
+				seven_seg <= "0011111"; 
+			when "1100" =>
+				seven_seg <= "1001110"; 
+			when "1101" =>
+				seven_seg <= "0111101"; 
+			when "1110" =>
+				seven_seg <= "1001111"; 
+			when "1111" =>
+				seven_seg <= "1000111"; 
 			when others =>
 				seven_seg <= "0000000"; 
 		end case;

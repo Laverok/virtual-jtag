@@ -20,8 +20,7 @@ entity vJTAG_Interface is
 end vJTAG_Interface;
 
 architecture behav of vJTAG_Interface is
-signal shift_buffer : std_logic_vector(3 downto 0) := "0000";
---signal ir_temp : std_logic_vector(3 downto 0);
+signal shift_buffer : std_logic_vector(15 downto 0) := (others => '0');
 
 --Instructions:
 --BYPASS - 1111
@@ -30,17 +29,11 @@ begin
 		process (tck) is
 		begin
 			if rising_edge(tck) then
-				data_out <= shift_buffer & "000000000000";
-				if(shift_buffer >= "1001") then
-					shift_buffer <= "0000";
-				else
-					shift_buffer <= shift_buffer + 1;
+				if sdr = '1' then
+					shift_buffer <= tdi & shift_buffer(15 downto 1);
+				elsif udr = '1' then
+					data_out <= shift_buffer;
 				end if;
---				if sdr = '1' then
---					shift_buffer <= tdi & shift_buffer(3 downto 1);
---				elsif udr = '1' then
---					data_out <= shift_buffer;
---				end if;
 			end if;
 		end process;
 		

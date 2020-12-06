@@ -6,6 +6,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity top is 
 	port (clk : in std_logic;
 			seven_seg : out std_logic_vector(6 downto 0);
+			--seven_seg_dp : out std_logic;
 			cathode : out std_logic_vector(3 downto 0)
 		);
 	
@@ -94,7 +95,8 @@ architecture behav of top is
 	signal uir : std_logic;
 	signal clk_7seg : std_logic;
 	signal seven_seg_in : std_logic_vector(15 downto 0);
-	signal clk_1Hz : std_logic;
+	--signal clk_1Hz : std_logic;
+	
 begin 
 	
 	JTAG : vJTAG
@@ -110,7 +112,7 @@ begin
 		virtual_state_uir => uir );
 	
 	JTAGInterface : vJTAG_Interface
-		port map(tck => clk_1Hz, 
+		port map(tck => tck, 
 		tdi => tdi, 
 		ir_in => ir_in, 
 		tdo => tdo, 
@@ -134,10 +136,10 @@ begin
 		CE => open,
 		clk_out => clk_7seg);
 	
-	One_hz_clk : prescaler
-		generic map(scale_factor => 10000000)
-		port map(clk_in => clk,
-		CE => open,
-		clk_out => clk_1Hz);
+--	One_hz_clk : prescaler
+--		generic map(scale_factor => 10000000)
+--		port map(clk_in => clk,
+--		CE => open,
+--		clk_out => clk_1Hz);
 		
 end behav;
