@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-entity vJTAG_Interface is
+entity SevenSeg_Interface is
 	port(tck : in std_logic;
 		tdi : in std_logic;
 		ir_in : in std_logic_vector(3 downto 0);
@@ -17,14 +17,13 @@ entity vJTAG_Interface is
 		mux_ctrl : out std_logic_vector(1 downto 0);
 		data_out : out std_logic_vector(15 downto 0)
 		);
-		
-end vJTAG_Interface;
+end SevenSeg_Interface;
 
 --Instructions:
 --CHSELECT 0001
 --WRITEDATA 0010
 
-architecture behav of vJTAG_Interface is
+architecture behav of SevenSeg_Interface is
 signal temp_mux : std_logic_vector(1 downto 0) := (others => '0');
 signal temp_data : std_logic_vector(15 downto 0) := (others => '0');
 signal bypass_reg : std_logic := '0';
@@ -69,5 +68,5 @@ begin
 			end if;
 		end process;
 		
-	end behav;
+end behav;
 	

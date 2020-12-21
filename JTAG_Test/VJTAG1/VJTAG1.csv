@@ -1,0 +1,18 @@
+# system info VJTAG1 on 2020.12.15.19:16:48
+system_info:
+name,value
+DEVICE,10M08DAF256C8GES
+DEVICE_FAMILY,MAX 10
+GENERATION_ID,1608056207
+#
+#
+# Files generated for VJTAG1 on 2020.12.15.19:16:48
+files:
+filepath,kind,attributes,module,is_top
+simulation/VJTAG1.vhd,VHDL,,VJTAG1,true
+simulation/submodules/sld_virtual_jtag.v,VERILOG,,sld_virtual_jtag,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+VJTAG1.virtual_jtag_0,sld_virtual_jtag
